@@ -29,5 +29,5 @@ We cannot have a zero denominator, so we can use require to make sure the d para
 
 class Rational(n: Int, d: Int){
   require(d != 0)
-  override def toString = n + "/" d
+  override def toString = n + "/" + d
 }
