@@ -1,1 +1,33 @@
+## Chapter 6
 
+class Rational(n: Int, d:Int)
+
+Immutable objects advantages over mutable objects:
+- no complex state changes over time
+- pass around freely
+- no way for two threads concurrently accessing an immutable to corrupt its state
+- immutable objects make for safe hash table keys
+
+The main disadvantage is that they sometimes require a large object graph to be copied where otherwise an update could be done in place
+
+class Rational(n: Int, d: Int) {
+  println("Created " + n + "/" + d)
+}
+
+The result of this code:
+
+new Rational(1,2)
+=> created 1/2
+
+class Rational(n: Int, d: Int){
+  override def toString = n + "/" + d
+}
+
+The override takes the place of the default toString method built into the class
+
+We cannot have a zero denominator, so we can use require to make sure the d parameter is non-zero
+
+class Rational(n: Int, d: Int){
+  require(d != 0)
+  override def toString = n + "/" d
+}
