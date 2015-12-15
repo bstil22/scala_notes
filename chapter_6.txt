@@ -31,3 +31,25 @@ class Rational(n: Int, d: Int){
   require(d != 0)
   override def toString = n + "/" + d
 }
+
+    class Rational(n: Int, d: Int) {
+      require(d != 0)
+      val numer: Int = n
+      val denom: Int = d
+      override def toString = numer +"/"+ denom
+      def add(that: Rational): Rational =
+        new Rational(
+          numer * that.denom + that.numer * denom,
+          denom * that.denom
+        )
+    }
+    
+this is required in order to access n and d, because you can only access them on the object from which add was invoked
+
+the keyword this refers to the object instance on which the current executing method is invoked
+
+def lessThan(that: Rational) = 
+  this.numer * that.denom < that.numer * this.denom
+  
+this.numer refers to the numerator of the object on which lessThan was invoked
+
